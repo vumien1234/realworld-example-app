@@ -1,0 +1,31 @@
+.wrapper{
+    position: relative;
+    text-align: center;
+    max-width: 60rem;
+    margin: auto;
+    top:8rem;
+    margin-bottom:25rem;
+    input,
+    textarea{
+        width: 100%;
+        max-width: 60rem;
+        border: 1px solid #ccc !important;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: none;
+        outline: none;
+    }
+    .button{
+        position: absolute;
+        right: 0;
+        bottom: -40px;
+        background-color: none;
+        padding: 10px 20px;
+        background-color:rgb(5, 101, 5) !important;
+        color: #fff;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+}

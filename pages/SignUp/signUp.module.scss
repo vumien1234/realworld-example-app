@@ -1,0 +1,15 @@
+.wrapper{
+    position: relative;
+    margin-top: 30%;
+    .title{
+        text-align: center;
+    }
+    input{
+        height: 50px;
+    }
+}
+.button-submit{
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+}

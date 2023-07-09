@@ -1,0 +1,101 @@
+.container{
+    position: relative;
+    top: 60px;
+    overflow: auto;
+}
+.conduit{
+    background-color: var(--color);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.3),
+    inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    .title{
+        font-size: 60px;
+    }
+    span{
+        font-size: 20px;
+    }
+}
+.global{
+    display: flex;
+    position: relative;
+    bottom:0;
+    top:30px;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 200px;
+
+    .active-tab {
+        color: var(--color);
+    }
+    .title-tabs{
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .content-global{
+        width: 80%;
+    }
+    .box-tags{
+        width: 20%;
+        margin-left: 40px;
+    }
+    .articles{
+        position: relative;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0 20px 0px;
+    }
+    .account-article{
+        position: relative;
+        display: flex;
+        img{
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .hearts{
+            position: absolute;
+            right: 0;
+            padding: 5px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--color);
+            font-size: 16px;
+            color:var(--color);
+            &:hover{
+                background-color: var(--color);
+                color: #fff;
+            }
+            .favorite{
+                padding-right: 5px;
+            }
+        }
+    }
+    .tags{
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color:#ccc;
+        font-size: 14px;
+        margin-top: 10px;
+        .title-tags{
+            list-style: none;
+            position: absolute;
+            right: 0;
+            border: 1px solid #ccc;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+    }
+    .Link{
+        &:hover{
+            text-decoration: underline;
+            color: var(--color);
+        }
+    }
+    
+}

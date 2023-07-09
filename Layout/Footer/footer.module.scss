@@ -1,0 +1,34 @@
+.wrapper{
+    position: fixed;
+    bottom: 0;
+    left: 0;right: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(#ffffff, #29323c);
+    box-shadow: 0 5px 5px 5px rgba(0,0,0,0.4);
+    .footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        button{
+            background-color: transparent;
+            cursor: pointer;
+        }
+        a{
+            color: #fff;
+            font-weight: 700;
+            font-size: 25px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .icon-github{
+        color: #fff;
+        display: flex;
+        height: 25px;
+        margin-right: 10px;
+    }
+}

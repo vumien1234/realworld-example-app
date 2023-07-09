@@ -1,0 +1,8 @@
+.dark{
+    background-color: #333 !important;
+    color: #fff !important;
+    min-height: 100vh;
+}
+.dark .container{
+    background-color: #524c4c;
+}
