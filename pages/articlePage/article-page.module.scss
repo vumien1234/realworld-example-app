@@ -1,6 +1,9 @@
 .header{
     height:4rem;
 }
+.box-comment{
+    position: relative;
+}
 .wrapper{
     margin-bottom: 6rem;
     position: relative;
@@ -32,6 +35,7 @@
             padding: 1px 10px;
             border-radius: 20px;
             border: 1px solid #ccc;
+            margin-right: 4px;
         }
         
     }

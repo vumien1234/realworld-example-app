@@ -98,7 +98,7 @@ function Home() {
                             ):(
                                 <>
                                     {articles.map((article,index)=>(
-                                        <Link to={`/articlepage/${article.slug}`}>
+                                        
                                             <div key={index} className={cx('articles')}>
                                                 <div  className={cx('account-article')}>
                                                     <img height={'30'} width={'30'} src={image} alt=""/>
@@ -116,19 +116,21 @@ function Home() {
                                                 
                                                 </div>
                                                 <div style={{marginTop:'20px'}} className={cx('content ')}>
-                                                    <h2>{article.title}</h2>
-                                                    <span style={{color:'gray',fontSize:'16px',lineHeight:'30px'}}>{article.description}</span>
+                                                   <Link to={`/articlepage/${article.slug}`}>
+                                                        <h2>{article.title}</h2>
+                                                        <span style={{color:'gray',fontSize:'16px',lineHeight:'30px'}}>{article.description}</span>
+                                                   </Link>
                                                     <div className={cx('tags')}>
                                                         <span>read more...</span>
-                                                    {article.tagList && (
-                                                            <ul >
-                                                                <li>{article.tagList}</li>
-                                                            </ul>
-                                                    )}
+                                                        <div style={{position:'absolute',right:'0'}}>
+                                                            {article.tagList.map((tag,index)=>(
+                                                                <span className={cx('title-tags')} key={index}>{tag}</span>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </Link>
+                                        
                                     ))}
                                     <Pagination style={{marginTop:'20px'}} value={activePage} onChange={setPage} total={10} />
                                 </>

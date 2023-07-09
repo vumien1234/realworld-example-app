@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./newActive.module.scss";
 import { ARTICLE } from "../../models/user";
-import { PostArticle } from "../../APIs/user";
+import { PostArticle } from "../../APIs/articles";
 import { useState } from "react";
 import { MultiSelect ,Button} from "@mantine/core";
 

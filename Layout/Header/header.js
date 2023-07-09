@@ -50,7 +50,7 @@ function Header() {
                 </title>
             </Helmet>
             <div className={cx('wrapper')}>
-                <h2 className={cx('title')}>conduit</h2>
+                <Link style={{fontSize:'25px',fontWeight:'bold'}} to='/' className={cx('title')}>conduit</Link>
                 <div className={cx('navigation')}>
                     {auth.logined ? (
                         <>

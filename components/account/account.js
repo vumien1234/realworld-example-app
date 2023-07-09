@@ -4,13 +4,14 @@ import { Button } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { FollowAuth, UnFollowAuth } from "../../APIs/user";
-import { Favorite, UnFavorite } from "../../APIs/user";
+import { FollowAuth, UnFollowAuth } from "../../APIs/follow";
+import { Favorite, UnFavorite } from "../../APIs/favorite";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 const cx = classNames.bind(styles);
 function Account({ article, style_box, stateFollow, stateFavorite }) {
+  const count = 1;
   const auth = useContext(AuthContext);
   const nav = useNavigate()
   const changeFollow = async () => {
@@ -45,7 +46,7 @@ function Account({ article, style_box, stateFollow, stateFavorite }) {
   };
   return (
     <div className={cx("account")} style={style_box}>
-      <img width={"40px"} height={"40px"} src={article.author.image} alt="" />
+      <img style={{borderRadius:'50%'}} width={"40px"} height={"40px"} src={article.author.image} alt="" />
       <div className={cx("infor-account")}>
         <p>{article.author.username}</p>
         <span style={{ color: "gray", fontSize: "14px" }}>
@@ -63,14 +64,13 @@ function Account({ article, style_box, stateFollow, stateFavorite }) {
         {article.author.username}
       </Button>
       <Button
-       
         onClick={auth.logined ? changeFavorite : () => nav("/signIn")}
         className={cx("hearth")}
         compact
         loading={stateFavorite.favorite === "loadding"}
       >
         <FontAwesomeIcon style={{ paddingRight: "0.3rem" }} icon={faHeart} />
-        {stateFavorite.favorite === true ? "UnFavorite" : "Favorite "}
+        {stateFavorite.favorite === true ? "UnFavorite"  : "Favorite "}
         {article.favoritesCount}
       </Button>
     </div>

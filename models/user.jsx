@@ -50,4 +50,26 @@ const GET_ARTICLE_SLUG = {
     }
 
 }
-export {USER_SIGNUP,USER_LOGIN,USER,ARTICLE,GET_ARTICLE_SLUG};
+const GET_ARTICLE_COMMENT = {
+    "comments": [
+        {
+          "id": 0,
+          "createdAt": "2023-07-09T09:06:50.424Z",
+          "updatedAt": "2023-07-09T09:06:50.424Z",
+          "body": "string",
+          "author": {
+            "username": "string",
+            "bio": "string",
+            "image": "string",
+            "following": true
+          }
+        }
+    ]
+}
+const POST_ARTICLE_COMMENT = {
+  "comment": {
+    "body": "string"
+  }
+}
+export {USER_SIGNUP,USER_LOGIN,USER,ARTICLE,GET_ARTICLE_SLUG,GET_ARTICLE_COMMENT,
+POST_ARTICLE_COMMENT};

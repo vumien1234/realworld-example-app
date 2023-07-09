@@ -1,18 +1,14 @@
 import classNames from "classnames/bind";
 import styles from './article-page.module.scss';
 import Header from "../../Layout/Header/header";
-import { GetArticleSlug } from "../../APIs/user";
+import { GetArticleSlug } from "../../APIs/articles";
 import { GET_ARTICLE_SLUG } from "../../models/user";
 import { useParams } from 'react-router-dom';
-import { Button } from '@mantine/core';
-import image from '../../assets/image/avata.png'
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "../../components/account/account";
-import { AuthContext } from "../../contexts/authContext";
 import CommentArticle from "../../components/CommentAricle/commentArticle";
 const cx = classNames.bind(styles)
 function ArticlePage() {
-    const auth = useContext(AuthContext)
     const {slug}= useParams()
     const [article,setArticle] = useState(GET_ARTICLE_SLUG)
     const [follow,setFollow] = useState('loading');
