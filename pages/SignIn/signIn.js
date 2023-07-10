@@ -7,6 +7,7 @@ import { Login } from '../../APIs/user';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
+import { notifications } from '@mantine/notifications';
 const cx = classNames.bind(styles);
 function SignIn() {
     const auth = useContext(AuthContext)
@@ -25,10 +26,13 @@ function SignIn() {
         try {
             const response = await Login(user);
             auth.action.login(response.user.token)
-            alert('đăng nhập thành công')
             nav('/')
         } catch (error) {
-            alert('đăng nhập không thành công')
+            notifications.show({
+                title: 'Đăng nhập thất bại',
+                message: 'Vui lòng đăng nhập lại! 🤥',
+                color: 'red',
+            })
             console.log(error)
         }
     }
@@ -46,14 +50,13 @@ function SignIn() {
                         type='text'
                         name='email'
                         label="email"
-                        />
-                        <TextInput
+                    />
+                    <TextInput
                         value={user.user.password}
                         onChange={(e)=>changeUser(e.target.value,'password')}
                         label="password"
                         type='password'
                         placeholder="password"
-                        mt="md"
                     />
                 <Button className={cx('button-submit')} type="submit" mt="md" >
                     Submit

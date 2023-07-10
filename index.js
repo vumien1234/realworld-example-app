@@ -7,14 +7,20 @@ import { AuthProvider } from './contexts/authContext';
 import {DarkLightProvider} from './contexts/darkLightContext';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Globalstyle>
     <DarkLightProvider>
       <AuthProvider>
-      <BrowserRouter>
-        <App/>
-      </BrowserRouter>
+      <MantineProvider withNormalizeCSS withGlobalStyles>
+        <BrowserRouter>
+          <Notifications />
+          <App/>
+        </BrowserRouter>
+      </MantineProvider>
       </AuthProvider>
     </DarkLightProvider>
   </Globalstyle>

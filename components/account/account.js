@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 const cx = classNames.bind(styles);
 function Account({ article, style_box, stateFollow, stateFavorite }) {
-  const count = 1;
   const auth = useContext(AuthContext);
   const nav = useNavigate()
   const changeFollow = async () => {
@@ -35,8 +34,10 @@ function Account({ article, style_box, stateFollow, stateFavorite }) {
     try {
       if (responses === true) {
         await Favorite(article.slug);
+        article.favoritesCount ++
       } else {
         await UnFavorite(article.slug);
+        article.favoritesCount --
       }
       stateFavorite.setFavorite(responses);
     } catch (error) {
@@ -44,13 +45,20 @@ function Account({ article, style_box, stateFollow, stateFavorite }) {
       stateFavorite.setFavorite(!responses);
     }
   };
+  const formatDate= (createdAt)=> {
+    const date = new Date(createdAt);
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "long" });
+    const year = date.getFullYear();
+    return `${month} ${day}, ${year}`;
+}
   return (
     <div className={cx("account")} style={style_box}>
       <img style={{borderRadius:'50%'}} width={"40px"} height={"40px"} src={article.author.image} alt="" />
       <div className={cx("infor-account")}>
         <p>{article.author.username}</p>
         <span style={{ color: "gray", fontSize: "14px" }}>
-          {article.updatedAt}
+          {formatDate(article.updatedAt)}
         </span>
       </div>
       <Button

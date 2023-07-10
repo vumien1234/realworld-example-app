@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { useContext, useState } from "react";
 import React from "react";
 import { Button } from '@mantine/core';
+
 const cx = classNames.bind(styles);
 function NewActive() {
     const auth = useContext(AuthContext)

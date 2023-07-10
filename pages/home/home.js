@@ -2,28 +2,19 @@ import classNames from "classnames/bind";
 import styles from './home.module.scss';
 import { Tabs } from '@mantine/core';
 import { useContext, useEffect, useState } from "react";
-import image from '../../assets/image/avata.png';
 import Tags from "../../components/tagsList/tags";
 import { getArticle } from "../../APIs/articles";
 import { AuthContext } from "../../contexts/authContext";
 import { Pagination } from '@mantine/core';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Banner from "../../components/Banner/banner";
-import { Link } from "react-router-dom";
+import Article from "../../components/Article/article";
 
 const cx = classNames.bind(styles)
 function Home() {   
     const [activePage, setPage] = useState(1);
     const auth = useContext(AuthContext);
     const [articles,setArticles] = useState([])
-    const formatDate= (createdAt)=> {
-        const date = new Date(createdAt);
-        const day = date.getDate();
-        const month = date.toLocaleString("en-US", { month: "long" });
-        const year = date.getFullYear();
-        return `${month} ${day}, ${year}`;
-    }
+    
     
     const [loading,setLoading] = useState(false)
     useEffect(()=>{
@@ -86,51 +77,19 @@ function Home() {
                                 </Tabs.Tab>
                            </>
                            )}
-                        </Tabs.List>
+                            </Tabs.List>
 
-                        <Tabs.Panel value="first" pt="xs">
-                            No articles are here... yet.
-                        </Tabs.Panel>
+                            <Tabs.Panel value="first" pt="xs">
+                                No articles are here... yet.
+                            </Tabs.Panel>
 
-                        <Tabs.Panel value="second" pt="xs">
+                            <Tabs.Panel value="second" pt="xs">
                             {loading ? (
                                 <span>Loading...</span>
                             ):(
                                 <>
-                                    {articles.map((article,index)=>(
-                                        
-                                            <div key={index} className={cx('articles')}>
-                                                <div  className={cx('account-article')}>
-                                                    <img height={'30'} width={'30'} src={image} alt=""/>
-                                                    <div key={article.id}>
-                                                        <Link className={cx('Link')} to="/myArticle" style={{color:'green'}}>{article.author.username}</Link>
-                                                        <span style={{color:'gray',display:'block',fontSize:'14px'}}>{formatDate(article.updatedAt)}</span>
-                                                    </div>
-                                                {article.favoritesCount && (
-                                                        <div  className={cx('hearts')} >
-                                                            <FontAwesomeIcon className={cx('favorite')} icon={faHeart}/>
-                                                            <span >{article.favoritesCount}</span>
-                                                        </div>
-                                                    )
-                                                    }
-                                                
-                                                </div>
-                                                <div style={{marginTop:'20px'}} className={cx('content ')}>
-                                                   <Link to={`/articlepage/${article.slug}`}>
-                                                        <h2>{article.title}</h2>
-                                                        <span style={{color:'gray',fontSize:'16px',lineHeight:'30px'}}>{article.description}</span>
-                                                   </Link>
-                                                    <div className={cx('tags')}>
-                                                        <span>read more...</span>
-                                                        <div style={{position:'absolute',right:'0'}}>
-                                                            {article.tagList.map((tag,index)=>(
-                                                                <span className={cx('title-tags')} key={index}>{tag}</span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
+                                    {articles.map((article)=>(
+                                        <Article key={article.slug} article={article}/>
                                     ))}
                                     <Pagination style={{marginTop:'20px'}} value={activePage} onChange={setPage} total={10} />
                                 </>

@@ -2,6 +2,7 @@ import { createContext, useLayoutEffect, useState } from "react";
 import { USER } from "../models/user";
 import { GetUser } from "../APIs/user";
 import Loading from "../components/loading/loading";
+import { notifications } from "@mantine/notifications";
 const AuthContext = createContext();
 function AuthProvider({children}) {
     // trạng thái người dùng 
@@ -18,6 +19,10 @@ function AuthProvider({children}) {
             ...USER,
             logined:false
         })
+        notifications.show({
+            title: 'Đã đăng xuất thành công',
+            message: 'Hẹn gặp lại bạn !',
+        })
     }
     const login = (jwt)=>{
         // lưu vào local,sau đó lưu vào state jwt
@@ -32,6 +37,10 @@ function AuthProvider({children}) {
                 setAuth({
                     logined :true,
                     ...response,
+                })
+                notifications.show({
+                    title: 'Đã đăng nhập thành công',
+                    message: 'Chào mừng bạn đã trở lại !!',
                 })
             } catch (error) {
                 logout();
