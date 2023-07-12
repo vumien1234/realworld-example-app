@@ -8,12 +8,15 @@ import { FollowAuth, UnFollowAuth } from "../../APIs/follow";
 import { Favorite, UnFavorite } from "../../APIs/favorite";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import {useContext, useState} from 'react';
+import {DeleteArticle} from '../../APIs/articles';
+import { useParams } from "react-router-dom";
 const cx = classNames.bind(styles);
 function Account({ article, style_box, stateFollow, stateFavorite}) {
+  const { slug } = useParams();
+  const [loading,setLoading] = useState(false)
   const auth = useContext(AuthContext);
   const nav = useNavigate()
-
   const changeFollow = async () => {
     const response = !stateFollow.follow;
     stateFollow.setFollow("loading");
@@ -29,7 +32,15 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
       stateFollow.setFollow(!response);
     }
   };
-
+  const deletes = async ()=>{
+    setLoading(true)
+    try {
+      await DeleteArticle(slug)
+      nav('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const changeFavorite = async () => {
     const responses = !stateFavorite.favorite;
     stateFavorite.setFavorite("loadding");
@@ -76,10 +87,11 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
           Edit Article
         </Button>
         <Button
-          onClick={auth.logined ? changeFavorite : () => nav("/signIn")}
+          onClick={()=>deletes()}
           className={cx("delete")}
           compact
-          loading={stateFavorite.favorite === "loadding"}
+          loading={loading}
+    
         >
           <FontAwesomeIcon style={{ paddingRight: "0.3rem" }} icon={faTrashCan} />
           Delete Article

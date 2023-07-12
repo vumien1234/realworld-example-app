@@ -26,6 +26,7 @@ function ArticlePage() {
         }
         fectData()
     },[slug])
+
     return (
         <>  
             <div className={cx('header')}><Header/></div>

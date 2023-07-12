@@ -1,4 +1,4 @@
-import {GET,POST, PUT} from './config';
+import {DELETE, GET,POST, PUT} from './config';
 
 const getArticle = (params)=>{
     return GET('/articles',params)
@@ -12,5 +12,7 @@ const GetArticleSlug = (slug) => {
 const PutArticle = (slug, data) => {
     return PUT(`/articles/${slug}`,data);
 };
-
-export {getArticle,PostArticle,GetArticleSlug,PutArticle}
+const DeleteArticle = (slug)=>{
+    return DELETE(`/articles/${slug}`);
+}
+export {getArticle,PostArticle,GetArticleSlug,PutArticle,DeleteArticle}
