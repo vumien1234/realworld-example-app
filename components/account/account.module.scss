@@ -28,4 +28,27 @@
         background-color: var(--color) !important;
         color: #fff;
     }
+    .edit,
+    .delete{
+        width: 9rem;
+    }
+    .edit{
+        margin-right: 5px;
+        background-color: transparent;
+        border: 1px solid #ccc;
+        color: #ccc;
+        &:hover{
+            background-color: #ccc;
+            color: #fff;
+        }
+    }
+    .delete{
+        color: #B85C5C;
+        border: 1px solid #B85C5C;
+        background-color: transparent;
+        &:hover{
+            background-color: #B85C5C;
+            color:#fff;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import NewActive from "./pages/NewActive/newActive";
 import { GuesRouter, AuthRouter } from "./middleware/authMiddleware";
 import NotFound from "./pages/404NotFound/404NotFound";
 import ArticlePage from "./pages/articlePage/article-page";
+import EditArticle from "./pages/edit/edit";
 
 function App() {
   const checkdarklight = useContext(DarkLightContext);
@@ -29,6 +30,7 @@ function App() {
             <Route path="/setting" element={<Setting />} />
             <Route path="/newActive" element={<NewActive />} />
             <Route path="/myArticle" element={<MyArticle />} />
+            <Route path="/editArticle/:slug" element={<EditArticle />} />
           </Route>
           <Route path="/articlepage/:slug" element={<ArticlePage />} />
           {/* 04 not found */}

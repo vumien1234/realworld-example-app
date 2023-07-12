@@ -6,6 +6,7 @@ import SignUp from '../pages/SignUp/signUp';
 import Setting from '../pages/Setting/setting';
 import MyArticle from '../pages/MyArticle/myAticle';
 import ArticlePage from '../pages/articlePage/article-page';
+import EditArticle from '../pages/edit/edit';
 const PublicRoutes = [
   <Routes>
     <Route path="/" element={<Home />} />
@@ -27,6 +28,7 @@ const PageRoutes = [
   <Routes>
     <Route path="/myArticle" element={<MyArticle />} />
     <Route path='/articlepage' element={<ArticlePage/>}/>
+    <Route path='/editArticle' element={<EditArticle/>}/>
   </Routes>
 ]
 
