@@ -4,6 +4,7 @@ import { ARTICLE } from "../../models/user";
 import { PostArticle } from "../../APIs/articles";
 import { useState } from "react";
 import { MultiSelect ,Button} from "@mantine/core";
+import { notifications } from '@mantine/notifications';
 
 const cx = classNames.bind(styles);
 function NewActive() {
@@ -27,10 +28,18 @@ function NewActive() {
         try {
             await PostArticle(publishArticle);
             setPublishArticle(ARTICLE);
-            alert("publish articel thành công");
+            notifications.show({
+                title: 'PushArticle Thành công',
+                message: '🥰',
+                color: 'green',
+            })
         } catch (error) {
             console.log(error);
-            alert("publish articel thất bại");
+            notifications.show({
+                title: 'PushArticle  thất bại',
+                message: 'Vui lòng push lại! 🤥',
+                color: 'red',
+            })
         }finally{
             setLoading(false)
         }

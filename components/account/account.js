@@ -17,6 +17,7 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
   const [loading,setLoading] = useState(false)
   const auth = useContext(AuthContext);
   const nav = useNavigate()
+
   const changeFollow = async () => {
     const response = !stateFollow.follow;
     stateFollow.setFollow("loading");
@@ -32,6 +33,7 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
       stateFollow.setFollow(!response);
     }
   };
+
   const deletes = async ()=>{
     setLoading(true)
     try {
@@ -41,6 +43,7 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
       console.log(error)
     }
   }
+
   const changeFavorite = async () => {
     const responses = !stateFavorite.favorite;
     stateFavorite.setFavorite("loadding");
@@ -58,6 +61,7 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
       stateFavorite.setFavorite(!responses);
     }
   };
+
   const formatDate= (createdAt)=> {
     const date = new Date(createdAt);
     const day = date.getDate();
@@ -65,6 +69,7 @@ function Account({ article, style_box, stateFollow, stateFavorite}) {
     const year = date.getFullYear();
     return `${month} ${day}, ${year}`;
   }
+  
   return (
     <div className={cx("account")} style={style_box}>
       <img style={{borderRadius:'50%'}} width={"40px"} height={"40px"} src={article.author.image} alt="" />

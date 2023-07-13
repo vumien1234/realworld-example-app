@@ -23,6 +23,11 @@ function SignIn() {
     }
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        notifications.show({
+            title: 'Đăng nhập thành công',
+            message: 'Chào  mừng bạn đã quay trở lại 😘',
+            color: 'green',
+        })
         try {
             const response = await Login(user);
             auth.action.login(response.user.token)

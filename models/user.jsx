@@ -32,7 +32,6 @@ const USER_LOGIN = {
     }
 }
 const GET_ARTICLE_SLUG = {
-        
     "slug": "loading...",
     "title": "loading...",
     "description": "loading...",
