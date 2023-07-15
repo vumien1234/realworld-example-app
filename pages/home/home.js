@@ -3,7 +3,7 @@ import styles from './home.module.scss';
 import { Tabs } from '@mantine/core';
 import { useContext, useEffect, useState } from "react";
 import Tags from "../../components/tagsList/tags";
-import { getArticle } from "../../APIs/articles";
+import { getArticle } from "../../apis/articles";
 import { AuthContext } from "../../contexts/authContext";
 import { Pagination } from '@mantine/core';
 import Banner from "../../components/Banner/banner";
@@ -14,8 +14,6 @@ function Home() {
     const [activePage, setPage] = useState(1);
     const auth = useContext(AuthContext);
     const [articles,setArticles] = useState([])
-    
-    
     const [loading,setLoading] = useState(false)
     useEffect(()=>{
         const fechData = async ()=>{

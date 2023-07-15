@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./setting.module.scss";
-import { UpdateUser } from "../../APIs/user";
+import { UpdateUser } from "../../apis/user";
 import { AuthContext } from "../../contexts/authContext";
 import { useContext, useState } from "react";
 import React from "react";

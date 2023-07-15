@@ -1,6 +1,6 @@
 import { createContext, useLayoutEffect, useState } from "react";
 import { USER } from "../models/user";
-import { GetUser } from "../APIs/user";
+import { GetUser } from "../apis/user";
 import Loading from "../components/loading/loading";
 import { notifications } from "@mantine/notifications";
 const AuthContext = createContext();
@@ -37,7 +37,7 @@ function AuthProvider({children}) {
                 setAuth({
                     logined :true,
                     ...response,
-                })
+                }) 
                 notifications.show({
                     title: 'Đã đăng nhập thành công',
                     message: 'Chào mừng bạn đã trở lại !!',

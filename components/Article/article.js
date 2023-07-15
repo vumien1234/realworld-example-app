@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import FormatDate from "../../Heppers/formatDate";
-import { Favorite, UnFavorite } from "../../APIs/favorite";
+import { Favorite, UnFavorite } from "../../apis/favorite";
 import {useState } from "react";
 import { Button } from "@mantine/core";
 const cx = classNames.bind(styles);

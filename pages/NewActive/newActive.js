@@ -1,79 +1,81 @@
 import classNames from "classnames/bind";
 import styles from "./newActive.module.scss";
 import { ARTICLE } from "../../models/user";
-import { PostArticle } from "../../APIs/articles";
+import { PostArticle } from "../../apis/articles";
 import { useState } from "react";
 import { MultiSelect ,Button} from "@mantine/core";
 import { notifications } from '@mantine/notifications';
 
 const cx = classNames.bind(styles);
 function NewActive() {
-    const [publishArticle, setPublishArticle] = useState(ARTICLE);
+    const [newArticle,setNewArticle] = useState(ARTICLE)
     const [loading,setLoading] = useState(false)
     const [data, setData] = useState([
         { value: "react", label: "React" },
         { value: "ng", label: "Angular" },
     ]);
-    const onchangeInput = (value, type) => {
-        setPublishArticle({
-        article: {
-            ...publishArticle.article,
-            [type]: value,
-        },
-        });
-    };
-    const handleSubmit = async (e) => {
+    
+    const onchangeinput = (value,type)=>{
+        setNewArticle({
+            article:{
+                ...newArticle.article,
+                [type]:value
+            }
+        })
+    }
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         setLoading(true)
         try {
-            await PostArticle(publishArticle);
-            setPublishArticle(ARTICLE);
+            await PostArticle(newArticle)
+            setNewArticle(ARTICLE)
             notifications.show({
                 title: 'PushArticle Thành công',
                 message: '🥰',
                 color: 'green',
             })
         } catch (error) {
-            console.log(error);
             notifications.show({
                 title: 'PushArticle  thất bại',
                 message: 'Vui lòng push lại! 🤥',
                 color: 'red',
             })
+            console.log(error)
         }finally{
             setLoading(false)
         }
-    };
+    }
+
     return (
         <form onSubmit={handleSubmit} className={cx("wrapper")}>
             <input
                 className={cx('input')}
+                value={newArticle.article.title}
+                onChange={(e)=>onchangeinput(e.target.value,'title')}
                 style={{ height: "50px", resize: "vertical" }}
-                value={publishArticle.article.title}
-                onChange={(e) => onchangeInput(e.target.value, "title")}
                 placeholder="Article title"
                 disabled={loading}
             />
             <input
                 className={cx('input')}
+                value={newArticle.article.description}
+                onChange={(e)=>onchangeinput(e.target.value,'description')}
                 style={{ height: "50px", resize: "vertical" }}
-                value={publishArticle.article.description}
-                onChange={(e) => onchangeInput(e.target.value, "description")}
                 placeholder="what is this article about ?"
                 disabled={loading}
             />
             <textarea
+                 value={newArticle.article.body}
+                onChange={(e)=>onchangeinput(e.target.value,'body')}
                 style={{ height: "200px", resize: "vertical" }}
-                value={publishArticle.article.body}
-                onChange={(e) => onchangeInput(e.target.value, "body")}
                 placeholder="Write your article "
                 disabled={loading}
             />
             <MultiSelect
                 disabled={loading}
                 data={data}
-                value={publishArticle.article.tagList}
-                onChange={(e) => onchangeInput(e, "tagList")}
+                value={newArticle.article.tagList}
+                onChange={(e)=>onchangeinput(e,'tagList')}
                 placeholder="enter tags"
                 searchable
                 creatable

@@ -6,7 +6,7 @@ const getArticle = (params)=>{
 const PostArticle = (article)=>{
     return POST('/articles',article)
 }
-const GetArticleSlug = (slug) => {
+const  GetArticleSlug = (slug) => {
     return GET(`/articles/${slug}`);
 };
 const PutArticle = (slug, data) => {

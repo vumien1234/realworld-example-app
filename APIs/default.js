@@ -1,4 +1,4 @@
-import {GET} from '../APIs/config';
+import {GET} from './config';
 const getTag = ()=>{
     return GET('/tags')
 }

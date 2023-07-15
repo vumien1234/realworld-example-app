@@ -1,12 +1,12 @@
 import classNames from "classnames/bind";
 import styles from "./edit.module.scss";
 import {GET_ARTICLE_SLUG } from "../../models/user";
-import { PutArticle } from "../../APIs/articles";
+import { PutArticle } from "../../apis/articles";
 import { useEffect, useState } from "react";
 import { MultiSelect ,Button} from "@mantine/core";
 import { useParams } from 'react-router-dom';
-import {GetArticleSlug} from '../../APIs/articles';
-import { getTag } from "../../APIs/default";
+import {GetArticleSlug} from '../../apis/articles';
+import { getTag } from "../../apis/default";
 import { notifications } from '@mantine/notifications';
 const cx = classNames.bind(styles);
 function EditArticle() {
@@ -39,8 +39,8 @@ function EditArticle() {
     },[])
     const onchangeInput = (value, type) => {
         setArticle({
-        article: {
-            ...article,
+        'article': {
+            ...article.article,
             [type]: value,
         },
         });

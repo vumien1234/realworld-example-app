@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from './tags.module.scss';
 import { Link } from "react-router-dom";
-import { getTag } from "../../APIs/default";
+import { getTag } from "../../apis/default";
 import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles)

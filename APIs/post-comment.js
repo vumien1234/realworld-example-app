@@ -1,4 +1,4 @@
-import {DELETE, GET,POST} from '../APIs/config';
+import {DELETE, GET,POST} from './config';
 const GetArticleComment = (slug)=>{
     return GET(`/articles/${slug}/comments`)
 }

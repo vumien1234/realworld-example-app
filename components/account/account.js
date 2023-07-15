@@ -4,12 +4,12 @@ import { Button } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { FollowAuth, UnFollowAuth } from "../../APIs/follow";
-import { Favorite, UnFavorite } from "../../APIs/favorite";
+import { FollowAuth, UnFollowAuth } from "../../apis/follow";
+import { Favorite, UnFavorite } from "../../apis/favorite";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import {useContext, useState} from 'react';
-import {DeleteArticle} from '../../APIs/articles';
+import {DeleteArticle} from '../../apis/articles';
 import { useParams } from "react-router-dom";
 const cx = classNames.bind(styles);
 function Account({ article, style_box, stateFollow, stateFavorite}) {

@@ -3,7 +3,7 @@ import styles from './account-comment.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
-import { DeleteComment } from "../../../APIs/post-comment";
+import { DeleteComment } from "../../../apis/post-comment";
 import { useParams } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 const cx = classNames.bind(styles);
