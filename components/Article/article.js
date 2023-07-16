@@ -45,7 +45,6 @@ function Article({ article }) {
               {FormatDate(article.updatedAt)}
             </span>
           </div>
-          {article.favoritesCount && (
             <Button
               onClick={changeFavorites}
               className={cx("hearts")}
@@ -57,7 +56,6 @@ function Article({ article }) {
               <FontAwesomeIcon className={cx("favorite")} icon={faHeart} />
               <span>{article.favoritesCount}</span>
             </Button>
-          )}
         </div>
         <div style={{ marginTop: "20px" }} className={cx("content ")}>
           <Link to={`/articlepage/${article.slug}`}>
