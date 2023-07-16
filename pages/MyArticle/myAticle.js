@@ -1,19 +1,20 @@
 import classNames from "classnames/bind";
 import styles from './myArticle.module.scss';
 import Header from "../../Layout/Header/header";
-import { useContext ,useState} from "react";
+import { useContext ,useEffect,useState} from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { Button } from '@mantine/core';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Tabs } from '@mantine/core';
+import Article from "../../components/Article/article";
 
 const cx = classNames.bind(styles)
 function MyArticle() {
     const auth = useContext(AuthContext)
     const [activeTab, setActiveTab] = useState('first');
-    
+ 
     return (
         <div>
           <div className={cx('header')}> <Header/></div>
@@ -46,10 +47,12 @@ function MyArticle() {
                             Blue tab
                         </Tabs.Tab>
                     </Tabs.List>
-    
-                    <Tabs.Panel value="first" pt="xs">
-                        No articles are here... yet.
-                    </Tabs.Panel>
+                 
+                        <Tabs.Panel value="first" pt="xs">
+                        {/* No articles are here... yet. */}
+                            {/* <Article/> */}
+                        </Tabs.Panel>
+              
     
                     <Tabs.Panel value="second" pt="xs">
                         No articles are here... yet.

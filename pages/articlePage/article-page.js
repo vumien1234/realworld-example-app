@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Account from "../../components/account/account";
 import CommentArticle from "../../components/CommentAricle/commentArticle";
-import { Prism } from "@mantine/prism";
 const cx = classNames.bind(styles);
 function ArticlePage() {
   const { slug } = useParams();
@@ -27,12 +26,6 @@ function ArticlePage() {
     };
     fectData();
   }, [slug]);
-//   const demoCode = `
-// import { Button } from '@mantine/core';
-
-// function Demo() {
-//     return <Button>Hello</Button>
-// }`;
 
   return (
     <>
@@ -84,9 +77,6 @@ function ArticlePage() {
                 margin: "auto",
               }}
             />
-            {/* <Prism withLineNumbers language="tsx">
-              {demoCode}
-            </Prism> */}
             <CommentArticle />
           </div>
         </div>

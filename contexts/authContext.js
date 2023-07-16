@@ -1,4 +1,4 @@
-import { createContext, useLayoutEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { USER } from "../models/user";
 import { GetUser } from "../apis/user";
 import Loading from "../components/loading/loading";
@@ -29,7 +29,7 @@ function AuthProvider({children}) {
         localStorage.setItem('jwt',jwt)
         setToken(jwt)
     }
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         const fechData = async ()=>{
             setLoading(true)
             try {
